@@ -2,13 +2,18 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
+import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'chat_item_view_model.dart';
 export 'chat_item_view_model.dart';
@@ -51,7 +56,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 1500.0.ms,
-            color: const Color(0xFF7E8999),
+            color: Color(0xFF7E8999),
             angle: 0.785,
           ),
         ],
@@ -95,7 +100,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
             children: [
               SelectionArea(
                   child: Text(
-                widget.chat!.question,
+                widget!.chat!.question,
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                       fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                       fontSize: 18.0,
@@ -129,7 +134,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Answer',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -147,7 +152,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
               ),
               Builder(
                 builder: (context) {
-                  if (functions.checkValue(widget.chat?.answer)) {
+                  if (functions.checkValue(widget!.chat?.answer)) {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +160,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                         custom_widgets.AnswerView(
                           width: double.infinity,
                           height: 20.0,
-                          text: widget.chat!.answer,
+                          text: widget!.chat!.answer,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -183,7 +188,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       await Share.share(
-                                        '${widget.chat?.question}${widget.chat?.answer}',
+                                        '${widget!.chat?.question}${widget!.chat?.answer}',
                                         sharePositionOrigin:
                                             getWidgetBoundingBox(context),
                                       );
@@ -203,7 +208,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   await Clipboard.setData(ClipboardData(
-                                      text: widget.chat!.answer));
+                                      text: widget!.chat!.answer));
                                 },
                                 child: FaIcon(
                                   FontAwesomeIcons.copy,
@@ -212,7 +217,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                                   size: 20.0,
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 15.0)),
+                            ].divide(SizedBox(width: 15.0)),
                           ),
                         ),
                       ],
@@ -220,7 +225,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                   } else {
                     return Container(
                       height: MediaQuery.sizeOf(context).height * 0.7,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -236,7 +241,7 @@ class _ChatItemViewWidgetState extends State<ChatItemViewWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 5.0),
                             child: Container(
                               width: 200.0,

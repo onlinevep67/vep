@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'thread_empty_model.dart';
 export 'thread_empty_model.dart';
 
@@ -84,7 +87,7 @@ class _ThreadEmptyWidgetState extends State<ThreadEmptyWidget> {
           ),
           Expanded(
             child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   context.pushNamed(
@@ -96,7 +99,7 @@ class _ThreadEmptyWidgetState extends State<ThreadEmptyWidget> {
                       ),
                     }.withoutNulls,
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: const TransitionInfo(
+                      kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.fade,
                       ),
@@ -107,9 +110,9 @@ class _ThreadEmptyWidgetState extends State<ThreadEmptyWidget> {
                 options: FFButtonOptions(
                   width: 230.0,
                   height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
@@ -120,7 +123,7 @@ class _ThreadEmptyWidgetState extends State<ThreadEmptyWidget> {
                             FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
                   elevation: 3.0,
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

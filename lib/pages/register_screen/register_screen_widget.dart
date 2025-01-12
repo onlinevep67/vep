@@ -5,9 +5,12 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'register_screen_model.dart';
 export 'register_screen_model.dart';
 
@@ -66,17 +69,17 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                 wrapWithModel(
                   model: _model.pageBgModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const PageBgWidget(),
+                  child: PageBgWidget(),
                 ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: SingleChildScrollView(
                   primary: false,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 32.0, 0.0, 32.0),
                         child: Text(
                           'VEP Portal',
@@ -94,7 +97,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                         child: Text(
                           'Register new user here!',
                           textAlign: TextAlign.start,
@@ -119,7 +122,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.usernameTextController,
@@ -154,14 +157,14 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -207,7 +210,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                       .asValidator(context),
                                 ),
                               ),
-                              SizedBox(
+                              Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.emailAddressTextController,
@@ -242,14 +245,14 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -295,7 +298,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                       .asValidator(context),
                                 ),
                               ),
-                              SizedBox(
+                              Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.passwordTextController,
@@ -330,14 +333,14 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -383,7 +386,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                       .asValidator(context),
                                 ),
                               ),
-                              SizedBox(
+                              Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller:
@@ -419,14 +422,14 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -473,7 +476,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     GoRouter.of(context).prepareAuthEvent();
@@ -482,7 +485,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                             .text) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
-                                        const SnackBar(
+                                        SnackBar(
                                           content: Text(
                                             'Passwords don\'t match!',
                                           ),
@@ -519,9 +522,9 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                   options: FFButtonOptions(
                                     width: 172.0,
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -538,7 +541,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -564,7 +567,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                     ],
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Or',
                                       textAlign: TextAlign.center,
@@ -595,7 +598,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                       ),
                                     ],
                                   ),
-                                ].divide(const SizedBox(width: 16.0)),
+                                ].divide(SizedBox(width: 16.0)),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -653,15 +656,15 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                           'ChatScreen', context.mounted);
                                     },
                                   ),
-                                ].divide(const SizedBox(width: 12.0)),
+                                ].divide(SizedBox(width: 12.0)),
                               ),
-                            ].divide(const SizedBox(height: 16.0)),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
                       Container(
                         height: MediaQuery.sizeOf(context).height * 0.1,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                       ),
                       Text(
                         'Already have an account?',
@@ -697,7 +700,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                               ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 12.0)),
+                    ].divide(SizedBox(height: 12.0)),
                   ),
                 ),
               ),

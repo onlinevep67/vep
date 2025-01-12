@@ -4,9 +4,12 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'forgot_password_screen_model.dart';
 export 'forgot_password_screen_model.dart';
 
@@ -56,17 +59,17 @@ class _ForgotPasswordScreenWidgetState
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
                     width: double.infinity,
                     height: 52.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -99,7 +102,7 @@ class _ForgotPasswordScreenWidgetState
                                         .headlineMediumFamily),
                               ),
                         ),
-                      ].divide(const SizedBox(width: 16.0)),
+                      ].divide(SizedBox(width: 16.0)),
                     ),
                   ),
                   Form(
@@ -124,7 +127,7 @@ class _ForgotPasswordScreenWidgetState
                                       MediaQuery.sizeOf(context).height, 16.0),
                                   0.0,
                                 )),
-                            child: SizedBox(
+                            child: Container(
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.emailAddressTextController,
@@ -157,14 +160,14 @@ class _ForgotPasswordScreenWidgetState
                                                     .labelMediumFamily),
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -210,7 +213,7 @@ class _ForgotPasswordScreenWidgetState
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 if (_model.formKey.currentState == null ||
@@ -220,7 +223,7 @@ class _ForgotPasswordScreenWidgetState
                                 if (_model
                                     .emailAddressTextController.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
+                                    SnackBar(
                                       content: Text(
                                         'Email required!',
                                       ),
@@ -238,9 +241,9 @@ class _ForgotPasswordScreenWidgetState
                               options: FFButtonOptions(
                                 width: 172.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -256,7 +259,7 @@ class _ForgotPasswordScreenWidgetState
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -264,11 +267,11 @@ class _ForgotPasswordScreenWidgetState
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 16.0)),
+                        ].divide(SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 56.0)),
+                ].divide(SizedBox(height: 56.0)),
               ),
             ),
           ],

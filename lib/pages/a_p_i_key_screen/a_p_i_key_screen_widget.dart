@@ -4,8 +4,12 @@ import '/components/page_bg/page_bg_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'a_p_i_key_screen_model.dart';
 export 'a_p_i_key_screen_model.dart';
 
@@ -55,14 +59,14 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                 wrapWithModel(
                   model: _model.pageBgModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const PageBgWidget(),
+                  child: PageBgWidget(),
                 ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
@@ -70,19 +74,19 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                           width: 200.0,
                           height: 200.0,
                           fit: BoxFit.contain,
-                          alignment: const Alignment(0.0, 1.0),
+                          alignment: Alignment(0.0, 1.0),
                         ),
                       ),
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 32.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 32.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Enter Your ChatGPT API Key',
                             style: FlutterFlowTheme.of(context)
@@ -102,7 +106,7 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             'To personalize and enhance your experience, please enter your ChatGPT API key below. This will allow the app to connect and provide intelligent responses. You can obtain your API key from OpenAI\'s platform.',
                             textAlign: TextAlign.center,
@@ -121,23 +125,23 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                 ),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 16.0)),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                   Expanded(
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               32.0, 16.0, 32.0, 16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.apiKeyTextController,
@@ -172,14 +176,14 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -226,21 +230,21 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: const Text('Alert'),
-                                          content: const Text(
+                                          title: Text('Alert'),
+                                          content: Text(
                                               'To update your key, please clone the project and enable actions.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         );
@@ -267,9 +271,9 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                   options: FFButtonOptions(
                                     width: 172.0,
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -286,7 +290,7 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -294,7 +298,7 @@ class _APIKeyScreenWidgetState extends State<APIKeyScreenWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 16.0)),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),

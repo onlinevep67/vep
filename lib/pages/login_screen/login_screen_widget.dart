@@ -4,10 +4,13 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'login_screen_model.dart';
 export 'login_screen_model.dart';
 
@@ -68,21 +71,21 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
               child: Form(
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.disabled,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 32.0),
                           child: Text(
                             'VEP Portal',
@@ -99,7 +102,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Text(
                             'Welcome Back, Glad to see you!',
@@ -117,7 +120,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 ),
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.emailAddressTextController,
@@ -150,14 +153,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 .labelMediumFamily),
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -199,7 +202,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 .asValidator(context),
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.passwordTextController,
@@ -232,14 +235,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 .labelMediumFamily),
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -281,9 +284,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 12.0, 16.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -313,7 +316,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
@@ -334,9 +337,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -352,7 +355,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -361,7 +364,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -381,7 +384,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 ],
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Or',
                                   textAlign: TextAlign.center,
@@ -411,7 +414,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                   ),
                                 ],
                               ),
-                            ].divide(const SizedBox(width: 16.0)),
+                            ].divide(SizedBox(width: 16.0)),
                           ),
                         ),
                         Row(
@@ -468,11 +471,11 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                     'ChatScreen', context.mounted);
                               },
                             ),
-                          ].divide(const SizedBox(width: 12.0)),
+                          ].divide(SizedBox(width: 12.0)),
                         ),
                         Container(
                           height: MediaQuery.sizeOf(context).height * 0.2,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
                         ),
@@ -512,7 +515,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 ),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

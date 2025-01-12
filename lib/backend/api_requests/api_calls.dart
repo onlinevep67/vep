@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:typed_data';
+import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -23,14 +25,14 @@ class EmilioLLMCall {
   "messages": [
     {
       "role": "system",
-      "content": "$oldContent"
+      "content": "${oldContent}"
     },
     {
       "role": "user",
       "content": [
         {
           "type": "text",
-          "text": "$content"
+          "text": "${content}"
         }
       ]
     },

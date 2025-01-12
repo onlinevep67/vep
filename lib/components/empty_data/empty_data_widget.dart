@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'empty_data_model.dart';
 export 'empty_data_model.dart';
 
@@ -37,7 +39,7 @@ class _EmptyDataWidgetState extends State<EmptyDataWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Text(
         'How can I help you?',
         style: FlutterFlowTheme.of(context).labelLarge.override(

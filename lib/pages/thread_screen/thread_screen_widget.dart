@@ -1,17 +1,23 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/chat_item_view/chat_item_view_widget.dart';
 import '/components/empty_data/empty_data_widget.dart';
 import '/components/page_bg/page_bg_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'thread_screen_model.dart';
 export 'thread_screen_model.dart';
 
@@ -43,15 +49,15 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.question != null && widget.question != '') {
+      if (widget!.question != null && widget!.question != '') {
         _model.isLoading = true;
         _model.addToChatData(ChatModelStruct(
-          question: widget.question,
+          question: widget!.question,
         ));
         safeSetState(() {});
         _model.initResponse = await EmilioLLMCall.call(
           apiToken: valueOrDefault(currentUserDocument?.apiKey, ''),
-          content: widget.question,
+          content: widget!.question,
           oldContent: valueOrDefault<String>(
             _model.chatData
                 .elementAtOrNull(
@@ -73,26 +79,26 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
               id: ChoicesModelStruct.maybeFromMap(
                       (_model.initResponse?.jsonBody ?? ''))
                   ?.message
-                  .content,
+                  ?.content,
               created: ChoicesModelStruct.maybeFromMap(
                       (_model.initResponse?.jsonBody ?? ''))
                   ?.message
-                  .toMap(),
-              question: widget.question,
+                  ?.toMap(),
+              question: widget!.question,
               answer: ChoicesModelStruct.maybeFromMap(
                       (_model.initResponse?.jsonBody ?? ''))
                   ?.message
-                  .hasContent()
-                  .toString(),
+                  ?.hasContent()
+                  ?.toString(),
             ),
           );
 
           await HistoryItemsRecord.createDoc(
             _model.initHistoryData!.reference,
-            id: widget.collectionId!.toString(),
+            id: widget!.collectionId!.toString(),
           ).set({
             ...createHistoryItemsRecordData(
-              historyId: widget.collectionId,
+              historyId: widget!.collectionId,
             ),
             ...mapToFirestore(
               {
@@ -111,7 +117,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
               ),
-              duration: const Duration(milliseconds: 4000),
+              duration: Duration(milliseconds: 4000),
               backgroundColor: FlutterFlowTheme.of(context).secondary,
             ),
           );
@@ -124,7 +130,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
         _model.isLoading = false;
         safeSetState(() {});
       } else {
-        _model.chatData = widget.thread!.data.toList().cast<ChatModelStruct>();
+        _model.chatData = widget!.thread!.data.toList().cast<ChatModelStruct>();
         safeSetState(() {});
       }
     });
@@ -151,27 +157,27 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Stack(
             children: [
               if (Theme.of(context).brightness == Brightness.dark)
                 wrapWithModel(
                   model: _model.pageBgModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const PageBgWidget(),
+                  child: PageBgWidget(),
                 ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 52.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -200,7 +206,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                 .headlineMediumFamily),
                                   ),
                             ),
-                          ].divide(const SizedBox(width: 16.0)),
+                          ].divide(SizedBox(width: 16.0)),
                         ),
                       ),
                     ),
@@ -213,7 +219,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                               builder: (context) {
                                 final chatItems = _model.chatData.toList();
                                 if (chatItems.isEmpty) {
-                                  return const EmptyDataWidget();
+                                  return EmptyDataWidget();
                                 }
 
                                 return ListView.separated(
@@ -222,20 +228,20 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: chatItems.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 20.0),
+                                      SizedBox(height: 20.0),
                                   itemBuilder: (context, chatItemsIndex) {
                                     final chatItemsItem =
                                         chatItems[chatItemsIndex];
                                     return wrapWithModel(
                                       model: _model.chatItemViewModels.getModel(
-                                        widget.collectionId!.toString(),
+                                        widget!.collectionId!.toString(),
                                         chatItemsIndex,
                                       ),
                                       updateCallback: () => safeSetState(() {}),
                                       updateOnChange: true,
                                       child: ChatItemViewWidget(
                                         key: Key(
-                                          'Keycvx_${widget.collectionId!.toString()}',
+                                          'Keycvx_${widget!.collectionId!.toString()}',
                                         ),
                                         chat: ChatModelStruct(),
                                       ),
@@ -247,9 +253,9 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                           ),
                           if (!_model.isLoading)
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
@@ -269,7 +275,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                         focusNode: _model.promptFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.promptTextController',
-                                          const Duration(milliseconds: 1),
+                                          Duration(milliseconds: 1),
                                           () async {
                                             _model.hasValue =
                                                 functions.checkValue(_model
@@ -298,7 +304,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                             .labelMediumFamily),
                                               ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -306,7 +312,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -314,7 +320,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -323,7 +329,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -331,7 +337,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 20.0, 0.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -360,7 +366,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                       if (_model.hasValue)
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 1.0),
+                                              AlignmentDirectional(1.0, 1.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -443,8 +449,8 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                                         ?.jsonBody ??
                                                                     ''))
                                                             ?.message
-                                                            .hasContent()
-                                                            .toString(),
+                                                            ?.hasContent()
+                                                            ?.toString(),
                                                         created: (_model
                                                                 .response
                                                                 ?.jsonBody ??
@@ -459,7 +465,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                                         ?.jsonBody ??
                                                                     ''))
                                                             ?.message
-                                                            .content,
+                                                            ?.content,
                                                       ),
                                                     );
 
@@ -467,11 +473,11 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                         .createDoc(
                                                       _model.historyData!
                                                           .reference,
-                                                      id: widget.collectionId!
+                                                      id: widget!.collectionId!
                                                           .toString(),
                                                     ).set({
                                                       ...createHistoryItemsRecordData(
-                                                        historyId: widget
+                                                        historyId: widget!
                                                             .collectionId,
                                                       ),
                                                       ...mapToFirestore(
@@ -501,7 +507,7 @@ class _ThreadScreenWidgetState extends State<ThreadScreenWidget> {
                                                                 .primaryText,
                                                           ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(

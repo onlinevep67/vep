@@ -1,9 +1,13 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'history_item_view_model.dart';
 export 'history_item_view_model.dart';
 
@@ -59,7 +63,7 @@ class _HistoryItemViewWidgetState extends State<HistoryItemViewWidget> {
                 backgroundColor: FlutterFlowTheme.of(context).error,
                 icon: Icons.delete_rounded,
                 onPressed: (_) async {
-                  await widget.chatDocument!.delete();
+                  await widget!.chatDocument!.delete();
                 },
               ),
             ],
@@ -68,7 +72,7 @@ class _HistoryItemViewWidgetState extends State<HistoryItemViewWidget> {
             color: Colors.transparent,
             child: ListTile(
               title: Text(
-                widget.chat!.question,
+                widget!.chat!.question,
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                       fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                       fontSize: 16.0,
@@ -81,7 +85,7 @@ class _HistoryItemViewWidgetState extends State<HistoryItemViewWidget> {
               subtitle: Text(
                 (String var1) {
                   return var1.length <= 60 ? var1 : var1.substring(0, 60);
-                }(widget.chat!.answer),
+                }(widget!.chat!.answer),
                 style: FlutterFlowTheme.of(context).labelMedium.override(
                       fontFamily:
                           FlutterFlowTheme.of(context).labelMediumFamily,

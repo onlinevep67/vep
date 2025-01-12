@@ -1,9 +1,13 @@
 import '/components/page_bg/page_bg_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'chat_screen_model.dart';
 export 'chat_screen_model.dart';
 
@@ -48,10 +52,10 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -59,11 +63,11 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                   Container(
                     width: double.infinity,
                     height: 56.0,
-                    decoration: const BoxDecoration(),
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    decoration: BoxDecoration(),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,19 +98,19 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                           .headlineMediumFamily),
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 16.0)),
+                        ].divide(SizedBox(width: 16.0)),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Spacer(flex: 4),
-                          const Spacer(flex: 3),
+                          Spacer(flex: 4),
+                          Spacer(flex: 3),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
@@ -150,7 +154,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
-                                                        const TransitionInfo(
+                                                        TransitionInfo(
                                                       hasTransition: true,
                                                       transitionType:
                                                           PageTransitionType
@@ -241,7 +245,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
-                                                        const TransitionInfo(
+                                                        TransitionInfo(
                                                       hasTransition: true,
                                                       transitionType:
                                                           PageTransitionType
@@ -263,7 +267,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                                           8.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(5.0),
+                                                  padding: EdgeInsets.all(5.0),
                                                   child: Text(
                                                     questionItem,
                                                     style: FlutterFlowTheme.of(
@@ -324,7 +328,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
-                                                        const TransitionInfo(
+                                                        TransitionInfo(
                                                       hasTransition: true,
                                                       transitionType:
                                                           PageTransitionType
@@ -346,7 +350,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                                                           8.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(5.0),
+                                                  padding: EdgeInsets.all(5.0),
                                                   child: Text(
                                                     questionItem,
                                                     style: FlutterFlowTheme.of(
@@ -384,7 +388,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -400,7 +404,7 @@ class _ChatScreenWidgetState extends State<ChatScreenWidget> {
                             ),
                           }.withoutNulls,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
+                            kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                             ),

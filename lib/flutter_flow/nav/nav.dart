@@ -1,15 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -77,52 +84,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginScreenWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginScreenWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginScreenWidget(),
         ),
         FFRoute(
           name: 'LoginScreen',
           path: '/loginScreen',
-          builder: (context, params) => const LoginScreenWidget(),
+          builder: (context, params) => LoginScreenWidget(),
         ),
         FFRoute(
           name: 'ChatScreen',
           path: '/chatScreen',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ChatScreen')
-              : const ChatScreenWidget(),
+              ? NavBarPage(initialPage: 'ChatScreen')
+              : ChatScreenWidget(),
         ),
         FFRoute(
           name: 'ForgotPasswordScreen',
           path: '/forgotPasswordScreen',
-          builder: (context, params) => const ForgotPasswordScreenWidget(),
+          builder: (context, params) => ForgotPasswordScreenWidget(),
         ),
         FFRoute(
           name: 'RegisterScreen',
           path: '/registerScreen',
-          builder: (context, params) => const RegisterScreenWidget(),
+          builder: (context, params) => RegisterScreenWidget(),
         ),
         FFRoute(
           name: 'APIKeyScreen',
           path: '/aPIKeyScreen',
-          builder: (context, params) => const APIKeyScreenWidget(),
+          builder: (context, params) => APIKeyScreenWidget(),
         ),
         FFRoute(
           name: 'HistoryScreen',
           path: '/historyScreen',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HistoryScreen')
-              : const HistoryScreenWidget(),
+              ? NavBarPage(initialPage: 'HistoryScreen')
+              : HistoryScreenWidget(),
         ),
         FFRoute(
           name: 'ProfileScreen',
           path: '/profileScreen',
-          builder: (context, params) => const ProfileScreenWidget(),
+          builder: (context, params) => ProfileScreenWidget(),
         ),
         FFRoute(
           name: 'ThreadScreen',
@@ -150,8 +157,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SettingScreen',
           path: '/settingScreen',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'SettingScreen')
-              : const SettingScreenWidget(),
+              ? NavBarPage(initialPage: 'SettingScreen')
+              : SettingScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -387,7 +394,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

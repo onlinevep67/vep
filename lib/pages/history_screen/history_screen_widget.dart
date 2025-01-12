@@ -5,8 +5,11 @@ import '/components/page_bg/page_bg_widget.dart';
 import '/components/thread_empty/thread_empty_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'history_screen_model.dart';
@@ -55,21 +58,21 @@ class _HistoryScreenWidgetState extends State<HistoryScreenWidget> {
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
                     width: double.infinity,
                     height: 56.0,
-                    decoration: const BoxDecoration(),
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    decoration: BoxDecoration(),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -99,7 +102,7 @@ class _HistoryScreenWidgetState extends State<HistoryScreenWidget> {
                                           .headlineMediumFamily),
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 16.0)),
+                        ].divide(SizedBox(width: 16.0)),
                       ),
                     ),
                   ),
@@ -124,12 +127,12 @@ class _HistoryScreenWidgetState extends State<HistoryScreenWidget> {
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
-                            return const HistoryLoadingWidget();
+                            return HistoryLoadingWidget();
                           }
                           List<HistoryItemsRecord>
                               listViewHistoryItemsRecordList = snapshot.data!;
                           if (listViewHistoryItemsRecordList.isEmpty) {
-                            return const ThreadEmptyWidget();
+                            return ThreadEmptyWidget();
                           }
 
                           return ListView.builder(
@@ -161,7 +164,7 @@ class _HistoryScreenWidgetState extends State<HistoryScreenWidget> {
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
                                       'thread': listViewHistoryItemsRecord,
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                       ),

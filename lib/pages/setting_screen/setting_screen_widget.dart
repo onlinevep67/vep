@@ -2,10 +2,14 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/page_bg/page_bg_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'setting_screen_model.dart';
 export 'setting_screen_model.dart';
 
@@ -50,20 +54,20 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 52.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -84,7 +88,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                           .headlineMediumFamily),
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 16.0)),
+                        ].divide(SizedBox(width: 16.0)),
                       ),
                     ),
                   ),
@@ -126,7 +130,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 16.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -144,7 +148,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                     width: 50.0,
                                     height: 50.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
@@ -160,7 +164,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -220,7 +224,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -252,14 +256,14 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: const Text('Alert'),
-                                  content: const Text(
+                                  title: Text('Alert'),
+                                  content: Text(
                                       'Please close the project and enable actions.'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
+                                      child: Text('Ok'),
                                     ),
                                   ],
                                 );
@@ -269,19 +273,19 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: const Text('Clear History?'),
-                                      content: const Text(
+                                      title: Text('Clear History?'),
+                                      content: Text(
                                           'Are you sure want to clear history?'),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, false),
-                                          child: const Text('Cancel'),
+                                          child: Text('Cancel'),
                                         ),
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: const Text('Clear'),
+                                          child: Text('Clear'),
                                         ),
                                       ],
                                     );
@@ -301,7 +305,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                           .primaryText,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).secondary,
                                 ),
@@ -330,7 +334,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                               ),
                               tileColor: Colors.transparent,
                               dense: true,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                             ),
                           ),
@@ -370,7 +374,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                               ),
                               tileColor: Colors.transparent,
                               dense: true,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                             ),
                           ),
@@ -439,7 +443,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                   tileColor: Colors.transparent,
                                   dense: true,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                 ),
                               ),
@@ -465,7 +469,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                                   tileColor: Colors.transparent,
                                   dense: true,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                 ),
                               ),
@@ -527,7 +531,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                             ),
                             tileColor: Colors.transparent,
                             dense: true,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                           ),
                         ),
@@ -553,7 +557,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
                             ),
                             tileColor: Colors.transparent,
                             dense: true,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                           ),
                         ),

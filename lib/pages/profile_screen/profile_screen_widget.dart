@@ -8,9 +8,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'profile_screen_model.dart';
 export 'profile_screen_model.dart';
 
@@ -70,20 +74,20 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
               wrapWithModel(
                 model: _model.pageBgModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const PageBgWidget(),
+                child: PageBgWidget(),
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 25.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 52.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -117,7 +121,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                           .headlineMediumFamily),
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 16.0)),
+                        ].divide(SizedBox(width: 16.0)),
                       ),
                     ),
                   ),
@@ -210,7 +214,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                       width: 90.0,
                                       height: 90.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.memory(
@@ -254,7 +258,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                                     MediaQuery.viewInsetsOf(
                                                         context),
                                                 child:
-                                                    const SelectImageOptionWidget(),
+                                                    SelectImageOptionWidget(),
                                               ),
                                             );
                                           },
@@ -278,7 +282,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                             MediaQuery.sizeOf(context).height,
                                             120.0),
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -298,7 +302,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                               },
                             ),
                             AuthUserStreamWidget(
-                              builder: (context) => SizedBox(
+                              builder: (context) => Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.usernameTextController,
@@ -333,14 +337,14 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -387,7 +391,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            Container(
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.emailAddressTextController,
@@ -420,14 +424,14 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                                     .labelMediumFamily),
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -472,7 +476,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                               ),
                             ),
                             AuthUserStreamWidget(
-                              builder: (context) => SizedBox(
+                              builder: (context) => Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.mobileNumberTextController,
@@ -507,14 +511,14 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                                       .labelMediumFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -569,7 +573,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                     _model.emailAddressTextController.text) ||
                                 functions.checkImageValue(_model.selectedImage))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: AuthUserStreamWidget(
                                   builder: (context) => FFButtonWidget(
                                     onPressed: () async {
@@ -656,7 +660,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondary,
@@ -667,10 +671,10 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                     options: FFButtonOptions(
                                       width: 172.0,
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -688,7 +692,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -697,7 +701,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                                   ),
                                 ),
                               ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
