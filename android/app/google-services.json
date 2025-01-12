@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "391943173394",
+    "firebase_url": "https://intelli-chat-rxghxn-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "intelli-chat-rxghxn",
+    "storage_bucket": "intelli-chat-rxghxn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391943173394:android:2553999788cac97455afcb",
+        "android_client_info": {
+          "package_name": "com.vepportal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391943173394-5tg9tss4nv45uql5sakfcslp3adjpn2c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vepportal.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "391943173394-970cq3rstkvqs32avae4qsj81il9tql2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMP_a2h7Ed2ABmlIDCg9O_3-OobldarA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391943173394-970cq3rstkvqs32avae4qsj81il9tql2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "391943173394-av7tf3urg1r1353iih3fiuil8mmhudv7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vepportal.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
